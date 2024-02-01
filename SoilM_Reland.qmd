@@ -77,58 +77,36 @@ write.csv(Moist1, "RelandscapingData/MOIST_Primary.csv", row.names = FALSE)
 save(Moist1, file="RelandscapingData/MOIST_Primary.RData")
 ```
 
-<<<<<<< HEAD
-### Native/NonNative x VWC
 
 ```{r}
+#Jazz EDA - native/nonnative x vwc
+#switching to numeric
+
 Moist1$Canopy1_VWC <- as.numeric(Moist1$Canopy1_VWC)
 Moist1$Canopy2_VWC <- as.numeric(Moist1$Canopy2_VWC)
 
 Moist1$Btwn1_VWC <- as.numeric(Moist1$Btwn1_VWC)
 Moist1$Btwn2_VWC <- as.numeric(Moist1$Btwn2_VWC)
 
-PlotOutline <- ggplot(Moist1,  aes( x=Treatment, y=Canopy1_VWC ) ) + geom_boxplot()
-
-PlotOutline
-```
-
-```{r}
+#averaging vwc
 Moist1$Canopy_VWC = (Moist1$Canopy1_VWC + Moist1$Canopy2_VWC) / 2
 Moist1$Btwn_VWC = (Moist1$Btwn1_VWC + Moist1$Btwn2_VWC) / 2
 Moist1$VWC = (Moist1$Canopy_VWC + Moist1$Btwn_VWC) / 2
 
-view(Moist1)
-```
-
-```{r}
+#plotting canopy only
 Canopy <- ggplot(Moist1,  aes( x=Treatment, y=Canopy_VWC ) ) + geom_boxplot()
 
-Canopy
-```
-
-```{r}
+#plotting btwn only 
 Btwn <- ggplot(Moist1,  aes( x=Treatment, y=VWC ) ) + geom_boxplot()
 
-Btwn
-```
-
-```{r}
+#plotting average of both
 VWC <- ggplot(Moist1,  aes( x=Treatment, y=VWC ) ) + geom_boxplot()
 
-VWC
-```
-
-```{r}
+#exploring relationship between canopy and btwn
 Both <-ggplot(Moist1,  aes( x=Treatment, y=VWC ) ) + 
   geom_boxplot() +
   geom_jitter(aes(x=Treatment, y=Canopy_VWC), color="blue") +
   geom_jitter(aes(x=Treatment, y=Btwn_VWC) , color="red")
-
-Both
-
-=======
-```{r}
-#Jazz EDA
 
 ```
 
@@ -138,5 +116,4 @@ Both
 
 ```{r}
 #Kelsey EDA
->>>>>>> master
 ```
