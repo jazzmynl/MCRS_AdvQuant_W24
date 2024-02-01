@@ -10,7 +10,7 @@ Winter 2024 - MCRS Advanced Quantitative Methods Class Project
 
 Team #: 3
 
-Team Members:
+Team Members:Tory, Jazz, and Kelsey
 
 ### Load Packages
 
@@ -77,6 +77,7 @@ write.csv(Moist1, "RelandscapingData/MOIST_Primary.csv", row.names = FALSE)
 save(Moist1, file="RelandscapingData/MOIST_Primary.RData")
 ```
 
+<<<<<<< HEAD
 ### Native/NonNative x VWC
 
 ```{r}
@@ -125,4 +126,17 @@ Both <-ggplot(Moist1,  aes( x=Treatment, y=VWC ) ) +
 
 Both
 
+=======
+```{r}
+#Jazz EDA
+
+```
+
+```{r}
+#Tory EDA
+```
+
+```{r}
+#Kelsey EDA
+>>>>>>> master
 ```
