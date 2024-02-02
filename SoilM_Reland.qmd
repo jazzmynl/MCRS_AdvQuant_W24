@@ -104,7 +104,7 @@ Both <-ggplot(Moist1,  aes( x=Treatment, y=VWC ) ) +
   geom_boxplot() +
   geom_jitter(aes(x=Treatment, y=Canopy_VWC), color="blue") +
   geom_jitter(aes(x=Treatment, y=Btwn_VWC) , color="red")
-
+ #
 ```
 
 ```{r}
