@@ -193,10 +193,39 @@ save(Transect, file="RelandscapingData/TRANSECT_Primary.RData")
 #Tory
 #fixing species codes and consolidate Unknowns
 #unique(Transect$`Species Code`)
-conditions <- c("UK(06)", "UNK(4)","UK(05)","UNK(1)","UK(01)","UK(03)","UNK(2)","UK(04)","UNK(3)","UK(02)")
-replacement_values <- c("UNKNOWN", "UNKNOWN","UNKNOWN","UNKNOWN","UNKNOWN", "UNKNOWN","UNKNOWN","UNKNOWN","UNKNOWN","UNKNOWN")
+conditions <- c("UK(06)", "UNK(4)","UK(05)","UNK(1)","UK(01)","UK(03)","UNK(2)","UK(04)","UNK(3)","UK(02)","LONGJEP","D(CYNDAC)","SONCLE","SONSPP")
+replacement_values <- c("UNKNOWN", "UNKNOWN","UNKNOWN","UNKNOWN","UNKNOWN", "UNKNOWN","UNKNOWN","UNKNOWN","UNKNOWN","UNKNOWN", "LONJAP","CYNDAC","SONOLE","SONOLE")
 Transect$`Species Code` <- replace(Transect$`Species Code`, Transect$`Species Code` %in% conditions, replacement_values)
 unique(Transect$`Species Code`)
+#adding collumn for vegetation type
+Transect <- Transect |>
+  mutate(Functgroup = case_when(
+    `Species Code` == "ELAPUN" ~ "Shrub",
+    `Species Code` == "PERATR" ~ "Shrub",
+    `Species Code` == "EUPSPP" ~ "Herb",
+    `Species Code` == "ENCCAL" ~ "Shrub",
+    `Species Code` == "CYNDAC" ~ "Grass",
+    `Species Code` == "CISPUR" ~ "Shrub",
+    `Species Code` == "PENSPA" ~ "Herb",
+    `Species Code` == "MEDLUP" ~ "Herb",
+    `Species Code` == "OXACOR" ~ "Herb",
+    `Species Code` == "VINMAJ" ~ "Shrub",
+    `Species Code` == "SONASP" ~ "Herb",
+    `Species Code` == "EUPALB" ~ "Herb",
+    `Species Code` == "LONJAP" ~ "Shrub",
+    `Species Code` == "IPOHED" ~ "Herb",
+    `Species Code` == "HEDHEL" ~ "Herb",
+    `Species Code` == "ILECOR" ~ "Shrub",
+    `Species Code` == "DAUCAR" ~ "Herb",
+    `Species Code` == "ANAARV" ~ "Forb",
+    `Species Code` == "EPICAN" ~ "Forb",
+    `Species Code` == "ERIFAS" ~ "Shrub",
+    `Species Code` == "SOLNIG" ~ "Herb",
+    `Species Code` == "SONOLE" ~ "Forb",
+    `Species Code` == "SAlCLE" ~ "Shrub",
+    `Species Code` == "MYRCAL" ~ "Shrub",
+    ))
+
 #Question:Did percent cover of different functional groups (or notable species) change from before planting to after planting? (i.e., was the restoration successful?) 
 #Do To
 #join species list so we can get n vs n
