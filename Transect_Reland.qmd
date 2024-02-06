@@ -182,10 +182,6 @@ save(Transect, file="RelandscapingData/TRANSECT_Primary.RData")
 ```
 
 ```{r}
-#Kesley
-```
-
-```{r}
 #Jazz
 
 #adding ground cover type
@@ -246,3 +242,10 @@ Transect <- Transect |>
 #find percent cover 
 
 ```
+
+```{r}
+# Kelsey 
+
+
+```
+
