@@ -187,6 +187,21 @@ save(Transect, file="RelandscapingData/TRANSECT_Primary.RData")
 
 ```{r}
 #Jazz
+
+#adding ground cover type
+Transect <- Transect |>
+  mutate(GroundCover = case_when(
+    `Species Code` == "L" ~ "Litter",
+    `Species Code` == "B" ~ "Bare",
+    `Species Code` == "M" ~ "Moss",
+    `Species Code` == "C" ~ "Cryptobiotic Crust",
+    `Species Code` == "W" ~ "Coarse Woody Debis",
+    `Species Code` == "F" ~ "Fine Woody Debris",
+    `Species Code` == "TH" ~ "Thatch",
+    `Species Code` == "R" ~ "Rock",
+    `Species Code` == "S" ~ "Stem"))
+    
+#Question: Does dominant ground cover differ between Native vs. Non-Native treatments?
 ```
 
 ```{r}
