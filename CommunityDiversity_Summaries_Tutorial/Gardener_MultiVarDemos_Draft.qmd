@@ -86,7 +86,8 @@ hsere.bc <- vegdist(t(hsere.biol), method = "bray")
 hsere.pco <- cmdscale(hsere.bc, eig = TRUE)
 scores(hsere.pco)
 
-hsere.pco.gg <- data.frame(hsere.pco) |> mutate(sample = rownames(hsere.pco))
+hsere.pco.gg <- data.frame(score(hsere.pco)) |> 
+  mutate(sample = rownames(score(hsere.pco)))
 
 ggplot(hsere.pco.gg) + 
   aes(x = X1, y = X2, label = sample) + 
@@ -143,7 +144,7 @@ ggplot() +
 
 ```
 
-### What about with one of our data sets? 
+### What about with one of our data sets?
 
 ```{r}
 Quads_Reland_temp <- Quads_Reland |> 
